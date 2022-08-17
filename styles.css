@@ -12,31 +12,35 @@ html{
 }
 body{
     min-height: 100%;
+    width: 100%;
     background: rgb(20,47,65);
     background: linear-gradient(90deg, rgba(20,47,65,1) 0%, rgba(2,0,36,1) 59%, rgba(69,29,78,1) 100%);
 }
 
 .container{
    display: grid;
-   gap: 50px;
+   row-gap: 50px;
    grid-template: 
    "header header" 90px
    "main image-main" auto
    "footer footer " auto
    / 1fr 1fr ;
+
 }
 
 
 
 /** Header  */
-.container > .header{
+ .header{
     grid-area: header;
     width: 100%;
+    height: 90px;
+
     padding: 0 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;  
-    
+ 
 }
 
 
@@ -45,11 +49,11 @@ body{
 .logo {
     display: flex;
     position: relative;
-    width: 15%;
+    width: 45%;
     align-items:center;
 }
 .logo >img{
-    width: 50px;
+    max-width: 10%;
     margin-right: 5px;
 }
 .logo > a {
@@ -62,11 +66,12 @@ body{
 
 
 /** Navegacion */ 
-.nav{
-    width: 50%; 
+ .nav{
+    width: 50%;
 }
 .nav > .nav-menu {
     display: flex;
+    flex-direction: row;
     width: 100%;
     padding: 10px;
     justify-content: space-between;
@@ -97,28 +102,60 @@ body{
 .button-menu:hover,.button-collect:hover, .button-discover:hover{
     width: 145px;
 }
+/** Menu hamburguer (Mobile) */
+
+.toggle-menu{
+    display: none;
+    width:40px;
+    position: absolute;
+    right: 2.5rem;
+    top: 1.6rem;
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.toggle-menu > img{
+    width: 90%;
+    max-width: 100%;
+}
 
 
 /**  Main */
 .main{
-    grid-area: main;
-    padding:40px ;
-    margin-left: 60px;
+    display: flex;
+    justify-content: center;
 }
-.main > h1{
-    font-size: 3.9rem;
-    font-weight: 900;
+.main-container{
+    grid-area: main;
+    width: 60%;
+    min-width: 60%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: start;
+}
+.titleDescription{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    
+}
+.title > h1{
+    font-size: 4rem;
+    font-weight: 1000;
+    letter-spacing: -3px;
     margin-bottom: 30px;
 }
 
-.main > p{
-    font-size: 1rem;
-    width: 70%;
+.titleDescription > p{
+    font-size: 1.2rem;
+    width: 100%;
     font-weight:100;
     margin-bottom: 40px;
 }
 .buttons-main{
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -127,8 +164,8 @@ body{
 }
 .button-collect{
     background-color: #B02BCE;
-    width: 140px;
-    padding: 12px 0;
+    width: 150px;
+    padding: 17px 0;
     border: none;
     cursor:pointer;
 
@@ -137,7 +174,7 @@ body{
 .button-discover{
     background-color: transparent;
     width: 140px;
-    padding: 12px 0;
+    padding: 17px 0;
     border-color: #B02BCE;
     border-style: solid;
     cursor:pointer;
@@ -146,7 +183,7 @@ body{
 
 
 .info-main{
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 
@@ -155,15 +192,21 @@ body{
     font-size:2.5rem;
 }
 
-
+.image-main{ 
+    grid-area: image-main;
+    width: 85%;
+    display: flex;
+    align-items: center;
+}
 .image-main>img{
     position: relative;
-    width: 80%;
+    width:100%;
     overflow: hidden;
     animation-name: move-image-main;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-}
+    margin-top: -30px;
+ }
 .nfts{
     color: #B02BCE;
     font-family: 'Silkscreen', cursive;
@@ -196,5 +239,68 @@ body{
     }   
 }
 
- 
+/** MEDIA QUERYS SCREEN*/
 
+
+/* Tablets Screen */
+@media  (min-width:768px ) and (max-width: 1110px) {
+
+    .container{
+        display: grid;
+        row-gap: 50px;
+        grid-template: 
+        "header header" 150px
+        "main image-main" auto
+        "footer footer " auto
+        / 1fr 1fr ;
+        align-items: center;
+        justify-items: center;
+     
+     }
+     .header{
+        height: 150px;
+        flex-direction: column;
+     }
+     .logo{
+        width: 100%;
+        justify-content: center;
+     }
+     .nav{
+        width: 100%;
+     }
+   
+}
+
+/* Smartphone*/
+@media (min-width: 576px) and (max-width: 767px){
+    
+    .container{
+        display: grid;
+        row-gap: 50px;
+        grid-template: 
+        "header header" 150px
+        "main main" auto
+        "image-main image-main" auto
+        "footer footer " auto
+        / 1fr  ;
+        align-items: center;
+        justify-items: center;
+    
+     }
+  
+        
+     .header{
+        height: 150px;
+        flex-direction: column;
+     }
+     .logo{
+        width: 100%;
+        justify-content: center;
+     }
+     .nav{
+        width: 100%;
+        min-width: 475px;
+     }
+   
+   
+}
