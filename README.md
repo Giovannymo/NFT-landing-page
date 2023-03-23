@@ -5,4 +5,4 @@ Hi, I've been practicing some vanilla HTML and CSS based on a web design I found
 
 # RESULT 
 
-- ## https://fantastic-selkie-09a016.netlify.app
+- ## https://ortisto.netlify.app
